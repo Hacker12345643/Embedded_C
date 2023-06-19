@@ -2,44 +2,18 @@
 //6.- Function to convert time to a string representation
 #include <stdio.h>
 
-unsigned short arr[] = {10, 22, 33, 41, 15, 55};
-
-void sortArray( unsigned short *array, unsigned char size );
+void TimeString( char *string, unsigned char hours, unsigned char minutes, unsigned char seconds );
 
 int main(){
-    unsigned char size = sizeof(arr) / sizeof(arr[0]);
-    sortArray(arr,size);
-    unsigned short *puntero = arr;
-    printf("Números acomodados: \n");
-    for (unsigned char i = 0; i < size; i++)
-    {
-        printf("Sort Num: %hu  \n", *puntero);
-        puntero++;
-    }
+    char hora[9];
+    unsigned char hours=15;
+    unsigned char minutes=30;
+    unsigned char seconds=0;
+    TimeString(hora,hours,minutes,seconds);
+    printf("Tiempo: %s\n", hora);
     return 0;
 }
 
-void sortArray( unsigned short *array, unsigned char size ){
-    unsigned short *puntero = array;
-    unsigned short aux;
-    printf("Inicie en posición: %hu  \n", puntero);
-    for (int i = 0; i < size-1; i++)
-    {
-        for (int j = 0; j < size-i-1; j++)
-        {
-            if (*puntero>*(puntero+1))
-            {
-                if (j!=(size-i-1))
-                {
-                    aux=*puntero;
-                    *puntero=*(puntero+1);
-                    *(puntero+1)=aux;
-                }                
-            }
-            printf("num a acomodar: %hu  \n", *puntero);
-            puntero++;
-        }
-        puntero=puntero-(size-i-1);
-        printf("Iniciare en posición: %hu  \n", puntero);
-    }
+void TimeString( char *string, unsigned char hours, unsigned char minutes, unsigned char seconds ){
+    sprintf(string, "%02d:%02d:%02d", hours, minutes, seconds);
 }
